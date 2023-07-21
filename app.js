@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://user:3St5jFMnxm8qGC0O@cluster0.jz7h7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://user:3St5jFMnxm8qGC0O@cluster0.jz7h7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+{
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -25,3 +26,26 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+
+// Define the blog post schema
+const blogPostSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+});
+
+// Create the blog post model
+const BlogPost = mongoose.model('BlogPost', blogPostSchema);
+
+// Fetch and display an individual blog post
+app.get('/posts/:id', (req, res) => {
+    const postId = req.params.id;
+  
+    BlogPost.findById(postId, (err, post) => {
+      if (err || !post) {
+        res.status(404).send('Post not found');
+      } else {
+        res.render('post', { post });
+      }
+    });
+  });
+  
