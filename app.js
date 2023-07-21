@@ -37,15 +37,18 @@ const blogPostSchema = new mongoose.Schema({
 const BlogPost = mongoose.model('BlogPost', blogPostSchema);
 
 // Fetch and display an individual blog post
-app.get('/posts/:id', (req, res) => {
-    const postId = req.params.id;
-  
-    BlogPost.findById(postId, (err, post) => {
-      if (err || !post) {
-        res.status(404).send('Post not found');
-      } else {
-        res.render('post', { post });
-      }
-    });
-  });
-  
+app.get('/posts/:id', async (req, res) => {
+  const postId = req.params.id;
+
+  try {
+    const post = await BlogPost.findById(postId).exec();
+
+    if (!post) {
+      res.status(404).send('Post not found');
+    } else {
+      res.render('post', { post });
+    }
+  } catch (err) {
+    res.status(500).send('Internal Server Error');
+  }
+});
