@@ -6,7 +6,12 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+  <div class="header">
+    <h1 class="title">Saint Mary's University Computer Science Review</h1>
+  </div>
   <h1><%= post.title %></h1>
+  <p>Published on <%= post.createdAt.toDateString() %></p>
   <p><%= post.content %></p>
+  <a class="button" href="/">Go Back to Home</a>
 </body>
 </html>

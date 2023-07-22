@@ -2,13 +2,86 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
-  p {
-    color: #666;
-  }
-  
+}
+
+h2 {
+    color: wheat;
+}
+
+p {
+    color: whitesmoke;
+}
+
+.blog-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.blog-post-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.blog-post-box h2 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.blog-post-content p {
+    color: white;
+}
+
+.blog-post-content p:last-child {
+    color: whitesmoke;
+    font-style: italic;
+}
+
+a.blog-post-box-link {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+a.blog-post-box-link:hover .blog-post-box {
+    background-color: #650021;
+}
+
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #650021;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a.button:hover {
+    background-color: #420016;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #445760;
+    color: white;
+    padding: 70px 0 0; /* Add top padding of 60px to create space below the fixed header */
+}
+
+.header {
+    background-color: maroon;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1; /* Ensures the header stays on top of other elements */
+}
+
+.logo {
+  width: 40px; /* Set the width of the logo image as per your preference */
+  height: 40px; /* Set the height of the logo image as per your preference */
+  margin-right: 10px; /* Add some spacing to the right of the logo */
+  vertical-align: middle; /* Align the logo vertically with the text */
+}

@@ -2,10 +2,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Node Express MongoDB Blog</title>
+  <title>SMU CS Blog</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <h1>Welcome to our Blog!</h1>
+  <div class="header">
+    <h2 class="title">Saint Mary's University Computer Science Review</h2>
+  </div>
+
+  <h2>Welcome to the SMU CS Blog!</h2>
+
+  <% if (posts.length > 0) { %>
+    <div class="blog-posts">
+      <% posts.forEach(post => { %>
+        <a href="/posts/<%= post._id %>" class="blog-post-box-link">
+          <div class="blog-post-box">
+            <h2><%= post.title %></h2>
+            <div class="blog-post-content">
+              <p>Published on <%= post.createdAt.toDateString() %></p>
+            </div>
+          </div>
+        </a>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No blog posts found.</p>
+  <% } %>
+  
+  <br>
+  <a class="button" href="/new-post">Create New Blog Post</a>
 </body>
 </html>
