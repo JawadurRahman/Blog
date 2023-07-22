@@ -2,10 +2,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const config = require('./config.json'); // Assuming your config file is in the same directory
+
 const app = express();
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://user:3St5jFMnxm8qGC0O@cluster0.jz7h7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+mongoose.connect(config.mongoURI, 
 {
   useNewUrlParser: true,
   useUnifiedTopology: true,
