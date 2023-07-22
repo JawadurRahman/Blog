@@ -62,15 +62,21 @@ app.post('/posts', async (req, res) => {
     createdAt: new Date(),
   };
 
-  // Save the new blog post to the database
-  const created = await BlogPost.create(newBlogPost);
-
-  if (created) {
-    res.redirect('/')
-    res.status(201).send('Blog post created successfully');
-  } else {
-    res.status(404).send('<h1>Creating failed not found<h1>');
+  try {
+    
+    // Save the new blog post to the database
+    const created = await BlogPost.create(newBlogPost);
+  
+    if (created) {    
+      res.redirect('/')    
+    } else {
+      res.status(404).send('<h1>Creating failed not found<h1>');
+    }
+  
+  } catch (err) {
+    res.status(403).send('Duplicate key Error: Use a newPostId')
   }
+
 
 });
 

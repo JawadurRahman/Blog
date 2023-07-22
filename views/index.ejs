@@ -14,7 +14,7 @@
 
   <% if (posts.length > 0) { %>
     <div class="blog-posts">
-      <% posts.forEach(post => { %>
+      <% posts.reverse().forEach(post => { %>
         <a href="/posts/<%= post._id %>" class="blog-post-box-link">
           <div class="blog-post-box">
             <h2><%= post.title %></h2>
